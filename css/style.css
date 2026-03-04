@@ -46,6 +46,36 @@ nav a:hover {
     color: #ff0033;
 }
 
+/* MOBILE MENU TOGGLE */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.menu-toggle span {
+    width: 25px;
+    height: 3px;
+    background: white;
+    margin: 3px 0;
+    transition: 0.3s;
+}
+
+.menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(8px, 8px);
+}
+
+.menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+}
+
 /* SECTIONS */
 .section {
     padding: 80px 20px;
@@ -83,6 +113,7 @@ nav a:hover {
     margin: 8px;
     display: inline-block;
     transition: 0.3s ease;
+    font-weight: 500;
 }
 
 .primary {
@@ -92,6 +123,7 @@ nav a:hover {
 
 .primary:hover {
     background: #cc0029;
+    transform: scale(1.05);
 }
 
 .secondary {
@@ -102,6 +134,7 @@ nav a:hover {
 .secondary:hover {
     background: white;
     color: black;
+    transform: scale(1.05);
 }
 
 /* ANIMATION */
@@ -116,30 +149,167 @@ nav a:hover {
     transform: translateY(0);
 }
 
+/* FEATURES SECTION */
+.features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+    padding: 80px 40px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.feature {
+    background: linear-gradient(135deg, #1a1a1a, #0d0d0d);
+    padding: 40px 30px;
+    border-radius: 20px;
+    transition: 0.4s ease;
+    border: 1px solid #222;
+}
+
+.feature:hover {
+    transform: translateY(-10px);
+    border-color: #ff0033;
+    box-shadow: 0 10px 40px rgba(255, 0, 51, 0.3);
+}
+
+.feature-icon {
+    font-size: 50px;
+    margin-bottom: 20px;
+}
+
+.feature h2 {
+    font-size: 24px;
+    margin: 15px 0;
+}
+
+.feature p {
+    color: #aaa;
+    font-size: 15px;
+}
+
+/* SPECS SECTION */
+.specs-section {
+    padding: 80px 40px;
+    background: #0a0a0a;
+    text-align: center;
+}
+
+.specs-section h2 {
+    font-size: 36px;
+    margin-bottom: 50px;
+}
+
+.specs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    max-width: 1000px;
+    margin: auto;
+}
+
+.spec-item {
+    background: #111;
+    padding: 30px 20px;
+    border-radius: 15px;
+    border: 1px solid #222;
+    transition: 0.3s;
+}
+
+.spec-item:hover {
+    border-color: #ff0033;
+    transform: scale(1.05);
+}
+
+.spec-item h3 {
+    color: #ff0033;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.spec-item p {
+    color: #ccc;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
 /* FOOTER */
 footer {
     text-align: center;
-    padding: 20px;
-    background: #111;
+    padding: 40px 20px;
+    background: #0a0a0a;
     font-size: 13px;
+    border-top: 1px solid #222;
+}
+
+.footer-content {
+    max-width: 1000px;
+    margin: auto;
+}
+
+.footer-links {
+    margin-bottom: 20px;
+}
+
+.footer-links a {
+    color: #aaa;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.footer-links a:hover {
+    color: #ff0033;
+}
+
+.social-links {
+    margin: 20px 0;
+}
+
+.social-links a {
+    font-size: 24px;
+    margin: 0 10px;
+    text-decoration: none;
+    transition: 0.3s;
+    display: inline-block;
+}
+
+.social-links a:hover {
+    transform: scale(1.2);
 }
 
 /* MOBILE RESPONSIVE */
 @media (max-width: 768px) {
 
     header {
-        flex-direction: column;
-        padding: 15px;
+        padding: 15px 20px;
+    }
+
+    .menu-toggle {
+        display: flex;
     }
 
     nav {
-        justify-content: center;
-        margin-top: 10px;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        background: rgba(0,0,0,0.98);
+        flex-direction: column;
+        padding: 20px;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+    }
+
+    nav.active {
+        max-height: 500px;
     }
 
     nav a {
-        margin: 8px;
-        font-size: 13px;
+        margin: 10px 0;
+        font-size: 16px;
     }
 
     .hero h1 {
@@ -152,5 +322,20 @@ footer {
 
     .section {
         padding: 60px 15px;
+    }
+
+    .features {
+        grid-template-columns: 1fr;
+        padding: 60px 20px;
+        gap: 30px;
+    }
+
+    .specs-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-links a {
+        display: block;
+        margin: 10px 0;
     }
 }
